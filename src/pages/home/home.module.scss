@@ -1,0 +1,75 @@
+@import "../../styles/breakpoints";
+
+.container {
+  margin-top: 40px;
+  margin-left: 60px;
+  display: flex;
+  @media (max-width: $mmd) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0px;
+  }
+  .child1 {
+    flex: 1;
+    flex-basis: 0;
+    .heading {
+      font-family: "Lato";
+      font-size: 60px;
+      font-weight: 100;
+      color: #0b1e5b;
+      @media (max-width: $sm) {
+        font-size: 30px;
+      }
+      @media (max-width: $xs) {
+        font-size: 20px;
+      }
+    }
+    .subHeading {
+      margin: 15px 0px;
+      p {
+        padding: 0px;
+        margin: 0px;
+        font-family: "Lato";
+        font-size: 30px;
+        @media (max-width: $sm) {
+          font-size: 15px;
+        }
+        @media (max-width: $xs) {
+          font-size: 12px;
+        }
+      }
+      .startJourney {
+        margin-top: 29px;
+        display: flex;
+        align-items: center;
+
+        p {
+          font-size: 18px;
+          font-weight: 600;
+          margin-right: 10px;
+          border-bottom: 2px solid;
+          width: max-content;
+          @media (max-width: $sm) {
+            font-size: 10px;
+          }
+        }
+        img {
+          margin-top: 5px;
+        }
+      }
+    }
+    h1 {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+  .child2 {
+    flex: 1;
+    flex-basis: 0;
+    display: flex;
+    align-items: flex-end;
+    img {
+      max-width: 100%;
+    }
+  }
+}

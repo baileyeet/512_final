@@ -1,0 +1,18 @@
+.container {
+  background-color: #fff;
+  display: flex;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  input {
+    border: none;
+    margin-left: 6px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input::placeholder {
+    color: #000;
+  }
+}

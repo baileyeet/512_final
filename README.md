@@ -1,4 +1,6 @@
-# MenoMate Final Project
+# MenoMate 
+
+App that offers a digital platform for individuals experiencing menopause to log, monitor, and understand their symptoms in real-time.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

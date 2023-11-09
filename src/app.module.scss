@@ -1,3 +1,13 @@
 .container {
   padding: 0px 50px;
+  
+  
+}
+.containerResources {
+  
+  padding: 0px 50px;
+  background-image:url("./assets/resources-background.png") ;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.80);//linear-gradient(45deg, #ff8a00, #e52e71); /* Adjust colors as needed */
+  //height: 100vh; /* Make the gradient cover the entire viewport height */
 }

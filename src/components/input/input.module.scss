@@ -16,3 +16,24 @@
     color: #000;
   }
 }
+
+
+.containerResources {
+  background-color: #ffffff4d;
+  display: flex;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  input {
+    border: none;
+    margin-left: 6px;
+    &:focus {
+      outline: none;
+    }
+    background-color: #ffffff00;
+  }
+
+  input::placeholder {
+    color: #000;
+  }
+}

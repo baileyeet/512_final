@@ -1,0 +1,83 @@
+.container{
+    place-items: center;
+    display: grid;
+    margin-bottom: 40px;
+    .headline{
+        text-align: center;
+        color: rgba(0, 0, 0, 0.80);
+        font-family: "Lato";
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 40px;
+    }
+    .childContainer{
+        display: flex;
+        .child1{
+            flex: 1;
+            flex-basis: 0;
+        }
+        .child2{
+            flex: 1;
+            flex-basis: 0;
+        
+            .imageContainer {
+                position: relative;
+                display: inline-block;
+                .momo {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    align-self: center;
+                }
+                .momoDot {
+                    position: absolute;
+                    //top: 200px;
+                    //left: 250px;
+                    cursor: pointer;
+                }
+                .momoHeartDot {
+                    position: absolute;
+                    top: 180px;
+                    left: 205px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .child3{
+            flex: 1;
+            flex-basis: 0;
+            .infoHeading {
+                margin-top: 125px;
+                color: rgba(0, 0, 0, 0.80);
+                font-family: "Lato";
+                font-size: 40px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+            .infoDescription {
+                color: #000;
+                font-family: "Lato";
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+            p {
+                color: rgba(0, 0, 0, 0.80);
+
+                font-family: "Lato";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+            a {
+                color: #E2ACA5;
+                font-weight: 700;
+            }
+        }
+    }
+}

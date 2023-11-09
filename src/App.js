@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import Tracking from "./pages/my-tracking";
 import Community from "./pages/community";
 import Resources from "./pages/resources";
+import SymptomMap from "./pages/symptom-map";
 
 import style from "./app.module.scss";
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/profile" element={<Tracking />} />
           <Route path="/community" element={<Community />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/map" element={<SymptomMap />} />
         </Routes>
       </div>
     </>

@@ -1,0 +1,44 @@
+@import "../../styles/breakpoints";
+
+.container {
+    padding-bottom: 50px;
+    background-color: (0, 0, 0, 0.80);
+    margin-top: 100px;
+    display: flex;
+    .child1{
+        flex: 1;
+        flex-basis: 0;
+        margin-right: 5%;
+        .overviewContainer{
+            margin-top: 150px;
+            .overview{
+                color: rgba(0, 0, 0, 0.80);
+                font-family: "Lato";
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+        
+    }
+    .child2{
+        flex: 1;
+        flex-basis: 0;
+        .imageContainer {
+            position: relative;
+            display: inline-block;
+            .momo {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .momoHeart {
+                position: absolute;
+                top: 200px;
+                left: 250px;
+                cursor: pointer;
+            }
+        }
+    }
+}

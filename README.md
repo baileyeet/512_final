@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# MenoMate Final project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App that offers a digital platform for individuals experiencing menopause to log, monitor, and understand their symptoms in real-time
 
 ## Available Scripts
 

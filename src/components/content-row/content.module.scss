@@ -1,0 +1,9 @@
+.thumbnailRow {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px; /* Adjust the gap between images */
+}
+.thumbnailRow::-webkit-scrollbar {
+    display: none;
+  }

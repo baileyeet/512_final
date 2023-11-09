@@ -1,0 +1,20 @@
+.symptomContainer{
+    gap : 20px;
+    display: flex;
+    margin-left: 30px;
+    .imageContainer{
+      display: flex;
+      flex-direction: column;
+    }
+    .textContainer{
+      .symptom{
+        color: #000;
+        font-family: "Inter";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+    
+  }

@@ -3,11 +3,12 @@ import React from "react";
 import style from "./input.module.scss";
 import searchIcon from "../../assets/searchIcon.png";
 
-const Input = () => {
+const Input = ({pageType}) => {
+  const searchBarPage = (pageType === "Resources") ? style.containerResources : style.container;
   return (
-    <div className={style.container}>
+    <div className={searchBarPage}>
       <img alt={"icon"} src={searchIcon} />
-      <input placeholder="Search..." />
+      <input placeholder="Search..."/>
     </div>
   );
 };

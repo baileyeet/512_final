@@ -27,7 +27,12 @@ const Community = () => {
         <div className={style.inputDiv}>
           <Input />
         </div>
-        <div>
+        <div className={style.btns}>
+          <Button
+            title={"New Post"}
+            icon={plusIcon}
+            className={style.filterBtn}
+          />
           <Button title={"Filter"} icon={filterIcon} />
         </div>
       </div>
@@ -50,10 +55,6 @@ const Community = () => {
       </div>
 
       {/* plus btn  */}
-
-      <div className={style.plusBtn}>
-        <img alt="icon" src={plusIcon} />
-      </div>
 
       {/* Questions */}
 

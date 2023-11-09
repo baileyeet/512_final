@@ -4,10 +4,14 @@
   padding: 10px 50px;
   border: 1px solid;
   border-radius: 6px;
-  background-color: transparent;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  span {
+    opacity: 1 !important;
+  }
 
   @media (max-width: $xxs) {
     padding: 10px 20px;

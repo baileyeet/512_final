@@ -6,9 +6,11 @@
   justify-content: center;
   h1 {
     text-align: center;
+    margin: 0px;
   }
   .para {
     text-align: center;
+    margin-bottom: 25px;
   }
 
   .inputSection {
@@ -18,10 +20,17 @@
       margin-right: 10px;
       width: 50%;
     }
+    .btns {
+      display: flex;
+      .filterBtn {
+        margin-right: 20px;
+      }
+    }
   }
 
   .parent {
     position: relative;
+    z-index: 1;
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
@@ -39,6 +48,7 @@
       grid-template-columns: repeat(4, 1fr);
       justify-content: center;
       position: absolute;
+      z-index: 2;
       left: 0;
       gap: 30px;
       width: 100%;

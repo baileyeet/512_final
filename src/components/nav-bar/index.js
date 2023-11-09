@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import style from "./navbar.module.scss";
+import profileImg from "../../assets/profileImg.png";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -26,7 +27,18 @@ const Navbar = () => {
           );
         })}
       </div>
-      <button className={style.btn}>Sign In</button>
+      {pathname === "/" ? (
+        <button className={style.btn}>Sign In</button>
+      ) : (
+        <Link to={"/profile"}>
+          <img
+            className={style.profile}
+            alt="profile img"
+            src={profileImg}
+            width={40}
+          />
+        </Link>
+      )}
     </div>
   );
 };

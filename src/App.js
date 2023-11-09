@@ -14,7 +14,7 @@ function App() {
 
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/tracking" element={<Tracking />} />
+          <Route path="/profile" element={<Tracking />} />
           <Route path="/community" element={<Community />} />
         </Routes>
       </div>

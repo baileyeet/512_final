@@ -180,11 +180,13 @@
       line-height: normal;
       margin-top: 10px;
       margin-bottom: 20px;
+      margin-right: 10px;
     }
     
     .trackingRow{
       display: flex;
       gap: 10px;
+      margin-right: 10%;
       .coloredHeading{
         background: #F6D1CC;
         padding: 10px 20px; 
@@ -194,18 +196,31 @@
       }
       
       .child3{
-        flex: 2;
+        flex: 1;
         background-color: #FFF;      /* Button background color */
         //color: white;
-        padding: 10px 20px; /* Adjust padding as needed */
+        //padding: 10px 20px; /* Adjust padding as needed */
         border: none;
         border-radius: 7px;
         color: #000;
+        height: 200px;
+        position: relative;
         @media (max-width: $sm) {
           font-size: 30px;
         }
         @media (max-width: $xs) {
           font-size: 25px;
+        }
+        .subHeading{
+          color: #000;
+          font-family: "Inter";
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: 20px;
         }
         
       }
@@ -213,15 +228,28 @@
         flex: 1;
         background-color: #FFF;      /* Button background color */
         //color: white;
-        padding: 10px 20px; /* Adjust padding as needed */
+        //padding: 10px 20px; /* Adjust padding as needed */
         border: none;
         border-radius: 7px;
+        height: 200px;
+        position: relative;
         img {
           height: 40%;
           width: 40%;
           margin-left: 30%;
-          margin-top: 20%;
+          margin-top: 5%;
           cursor: pointer;
+        }
+        .subHeading{
+          color: #000;
+          font-family: "Inter";
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: 20px;
         }
         
       }
@@ -253,7 +281,7 @@
         }
       }
       .child6{
-        flex: 2;
+        flex: 1;
         background-color: #FFF;      /* Button background color */
         //color: white;
         //padding: 10px 20px; /* Adjust padding as needed */
@@ -280,7 +308,8 @@
           line-height: normal;
           //position:absolute;
           margin-top: 20px;
-          margin-left: 10px;
+          margin-left: 20px;
+          margin-right: 10px;
         }
         img {
           margin-left: 90%;

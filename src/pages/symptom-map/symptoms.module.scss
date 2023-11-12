@@ -20,6 +20,25 @@
                 line-height: normal;
             }
         }
+        .startJourney {
+            margin-top: 29px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            p {
+              font-size: 18px;
+              font-weight: 600;
+              margin-right: 10px;
+              border-bottom: 2px solid;
+              width: max-content;
+              @media (max-width: $sm) {
+                font-size: 10px;
+              }
+            }
+            img {
+              margin-top: 5px;
+            }
+          }
         
     }
     .child2{

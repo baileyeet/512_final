@@ -1,6 +1,4 @@
 .container{
-    place-items: center;
-    display: grid;
     margin-bottom: 40px;
     .headline{
         text-align: center;
@@ -17,37 +15,34 @@
         .child1{
             flex: 1;
             flex-basis: 0;
+            box-sizing: border-box;
         }
         .child2{
             flex: 1;
             flex-basis: 0;
-        
+            //width: 100%;
+            box-sizing: border-box;
+            margin-right: 0;
             .imageContainer {
                 position: relative;
                 display: inline-block;
+                align-self: center;
                 .momo {
                     width: 100%;
                     height: auto;
                     display: block;
                     align-self: center;
                 }
-                .momoDot {
-                    position: absolute;
-                    //top: 200px;
-                    //left: 250px;
-                    cursor: pointer;
-                }
-                .momoHeartDot {
-                    position: absolute;
-                    top: 180px;
-                    left: 205px;
-                    cursor: pointer;
-                }
             }
+            
         }
         .child3{
             flex: 1;
             flex-basis: 0;
+            //position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            margin-left: 0;
             .infoHeading {
                 color: rgba(0, 0, 0, 0.80);
                 font-family: "Lato";

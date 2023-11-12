@@ -9,7 +9,13 @@ const Navbar = () => {
 
   return (
     <div className={style.container}>
-      <h1 className={style.logoText}>MenoMate</h1>
+      {/*<h1 className={style.logoText}>MenoMate</h1>*/}
+      <Link
+                to="/"
+                className={style.logoText}
+              >
+                <h1 className={style.logoText}>MenoMate</h1>
+              </Link>
       <div className={style.menuText}>
         {menuData?.map((data, index) => {
           return (
@@ -46,7 +52,7 @@ const Navbar = () => {
 export default Navbar;
 
 const menuData = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: "/home" },
   { name: "Symptoms Map", path: "/map" },
   { name: "Resources", path: "/resources" },
   { name: "Community", path: "/community" },

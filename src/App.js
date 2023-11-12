@@ -6,6 +6,7 @@ import Tracking from "./pages/my-tracking";
 import Community from "./pages/community";
 import Resources from "./pages/resources";
 import SymptomMap from "./pages/symptom-map";
+import Landing  from "./pages/landing";
 
 import style from "./app.module.scss";
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Landing />} />
+          <Route path="/home"  element={<Home />} />
           <Route path="/profile" element={<Tracking />} />
           <Route path="/community" element={<Community />} />
           <Route path="/resources" element={<Resources />} />

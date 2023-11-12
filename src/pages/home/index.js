@@ -10,40 +10,9 @@ import seeMoreArrow from "../../assets/home-seeMoreArrow.svg"
 import logSymptoms from "../../assets/home-logSymptomsIcon.svg"
 
 const Home = () => {
-  const [journeyStarted, setJourneyStarted] = useState(false);
 
-  const handleStartJourney = () => {
-    setJourneyStarted(true);
-  };
   return (
-    <div>
-      {/*Landing*/}
-      {!journeyStarted ? (
-      <div className={style.container}>
-      <div className={style.child1}>
-        <h1 className={style.heading}>Your Ultimate </h1>
-        <h1 className={style.heading}>Menopause </h1>
-        <h1 className={style.heading}> Companion</h1>
-        <div className={style.subHeading}>
-          <p>Empower your menopause journey </p>
-          <p>
-            with our <b>all-in-one</b> platform.<b> Learn</b>,{" "}
-          </p>
-          <p>
-            <b>Connect</b> and <b>Track</b> your progress.
-          </p>
-          <div className={style.startJourney} onClick={handleStartJourney}>
-            <p>Start My Journey</p>
-            <img alt="arrow" src={rightArrowImg} />
-          </div>
-        </div>
-      </div>
-      <div className={style.child2}>
-        <img alt="img" src={landingPageImg} />
-      </div>
-      </div>
-      ) : 
-      (<div className={style.container2}>
+      <div className={style.container2}>
         {/*Once Journey Starts*/}
         <div className={style.child1}>
           <h1 className={style.chosenCategory}>Tracking Insights </h1>
@@ -77,12 +46,10 @@ const Home = () => {
           </div>
           <div className={style.heading}>For You</div>
           <ContentRow thumbnailType = {"For You"}></ContentRow>
-          <div className={style.heading}>Top Videos</div>
+          <div className={style.heading}>Saved</div>
           <ContentRow thumbnailType = {"Top Videos"}></ContentRow>
         </div>
-      </div>) }
-      
-    </div>
+      </div>
   );
 };
 

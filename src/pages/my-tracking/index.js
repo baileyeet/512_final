@@ -2,9 +2,18 @@ import React from "react";
 
 import style from "./tracking.module.scss";
 import AccountDetail from "../../components/account-detail";
+import { useTheme } from '../../components/theme-color';
 
 const Tracking = () => {
+  const { theme, updateTheme  } = useTheme();
+  const bodyBgColor = {
+    background: theme === "yellow" ? "#FFE6BB" : theme === "blue" ? "#E4F1E5" : "#ffefec",
+    margin: 0,
+    minHeight: '100vh',
+  }
+  console.log(theme);
   return (
+    <body style = {bodyBgColor}>
     <div className={style.container}>
       <div className={style.accountDiv}>
         <div className={style.accText}>
@@ -13,17 +22,22 @@ const Tracking = () => {
         </div>
         <div className={style.colorScheme}>
           <span>Color Scheme:</span>
-          <div className={style.circle} style={{ border: "1px solid" }} />
+          <div className={style.circle} 
+          style={{ backgroundColor: "#F6D1CC", border: "1px solid #F6D1CC" }}
+          onClick={() => updateTheme("pink")}/>
           <div
             className={style.circle}
             style={{ backgroundColor: "#C2D3C4", border: "1px solid #C2D3C4" }}
+            onClick={() => updateTheme("blue")}
           />
           <div
             className={style.circle}
             style={{ backgroundColor: "#FFC562", border: "1px solid #FFC562" }}
+            onClick={() => updateTheme("yellow")}
           />
         </div>
       </div>
+      
 
       {allData?.map(({ title, credentials, customizedData }, i) => {
         return (
@@ -35,6 +49,7 @@ const Tracking = () => {
         );
       })}
     </div>
+    </body>
   );
 };
 

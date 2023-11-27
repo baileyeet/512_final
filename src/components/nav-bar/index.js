@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../theme-color";
 
 import style from "./navbar.module.scss";
 import profileImg from "../../assets/profileImg.png";
 
 const Navbar = () => {
+  const { theme} = useTheme();
   const { pathname } = useLocation();
-
+  const activeClassStyle = theme === "yellow" ? style.activeClassY : theme === "blue" ? style.activeClassB : style.activeClass;
+  const buttonBgColor = {background: theme === "yellow" ? "#FFC562" : theme === "blue" ? "rgba(66, 95, 128, 0.50)" : "#e2aca5"};
   return (
     <div className={style.container}>
       {/*<h1 className={style.logoText}>MenoMate</h1>*/}
@@ -24,7 +27,7 @@ const Navbar = () => {
                 to={data?.path}
                 key={index}
                 className={`${
-                  pathname === data?.path ? style.activeClass : style.link
+                  pathname === data?.path ? activeClassStyle : style.link
                 }`}
               >
                 {data?.name}
@@ -34,7 +37,7 @@ const Navbar = () => {
         })}
       </div>
       {pathname === "/" ? (
-        <button className={style.btn}>Sign In</button>
+        <button className={style.btn} style = {buttonBgColor}>Sign In</button>
       ) : (
         <Link to={"/profile"}>
           <img
@@ -56,5 +59,5 @@ const menuData = [
   { name: "Symptoms Map", path: "/map" },
   { name: "Resources", path: "/resources" },
   { name: "Community", path: "/community" },
-  //{ name: "My Tracking", path: "/tracking" },
+  { name: "My Tracking", path: "/tracking" },
 ];

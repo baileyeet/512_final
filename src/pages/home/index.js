@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { useTheme } from "../../components/theme-color";
 
 import style from "./home.module.scss";
 import landingPageImg from "../../assets/landingPageImg.png";
@@ -7,15 +10,20 @@ import ContentRow from "../../components/content-row";
 import categoryCircle from "../../assets/home-categoryCircle.svg";
 import Symptom from "../../components/symptom"
 import seeMoreArrow from "../../assets/home-seeMoreArrow.svg"
-import logSymptoms from "../../assets/home-logSymptomsIcon.svg"
+import logSymptomsP from "../../assets/home-logSymptomsIcon.svg"
+import logSymptomsB from "../../assets/home-logSymptomsIconB.svg"
+import logSymptomsY from "../../assets/home-logSymptomsIconY.svg"
 
 const Home = () => {
-
+  const { theme} = useTheme();
+  const logSymptoms = theme === "yellow" ? logSymptomsY :  theme === "blue" ? logSymptomsB : logSymptomsP;
+  const coloredHeadingColor = {background: theme === "yellow" ? "#FFC562" : theme === "blue" ? "#425F80" : "#F6D1CC"};
+  const chosenCategoryColor = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.60)" : theme === "blue" ? "rgba(66, 95, 128, 0.60)" : "rgba(246, 162, 144, 0.60)"};
   return (
       <div className={style.container2}>
         {/*Once Journey Starts*/}
         <div className={style.child1}>
-          <h1 className={style.chosenCategory}>Tracking Insights </h1>
+          <h1 className={style.chosenCategory} style = {chosenCategoryColor}>Tracking Insights </h1>
           <h1 className={style.category}>For You</h1>
           <h1 className={style.category}>Saved</h1>
         </div>
@@ -25,7 +33,11 @@ const Home = () => {
           <div className={style.trackingRow}>
           <div className={style.child4}>
               <div className={style.subHeading}>Log Your Symptoms </div>
-              <img alt="icon" src={logSymptoms} />
+              <Link
+                to="/tracking">
+                <img alt="icon" src={logSymptoms} />
+              </Link>
+              
               
             </div>
             <div className={style.child3}>
@@ -37,7 +49,7 @@ const Home = () => {
             
   
             <div className={style.child6}>
-              <div className={style.coloredHeading}>
+              <div className={style.coloredHeading} style = {coloredHeadingColor}>
                  <div className={style.subHeading}>Your week at a glance </div>
               </div>
               <div className={style.weekSnippet}>Hi Susan! Check out some possible insights about your upcoming week.</div>

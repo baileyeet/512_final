@@ -1,12 +1,35 @@
 import React from "react";
 
-import commentIcon from "../../assets/commentIcon.png";
-import shareIcon from "../../assets/shareIcon.png";
-import saveIcon from "../../assets/saveIcon.png";
+import commentIconP from "../../assets/commentIcon.png";
+import shareIconP from "../../assets/shareIcon.png";
+import saveIconP from "../../assets/saveIcon.png";
+import shareIconY from "../../assets/community-shareIconY.svg";
+import saveIconY from "../../assets/community-saveIconY.svg";
+import commentIconY from "../../assets/community-commentIconY.svg";
+import shareIconB from "../../assets/community-shareIconB.svg";
+import saveIconB from "../../assets/community-saveIconB.svg";
+import commentIconB from "../../assets/community-commentIconB.svg";
+
 import blogImg1 from "../../assets/blogImg1.png";
 import style from "./question.module.scss";
+import {useTheme} from "../theme-color";
+
+
+
 
 const Question = ({ title, desc, blogImg }) => {
+  
+  const { theme} = useTheme();
+  const socialsColor = {color: theme === "yellow" ? "#D89D35" : theme === "blue" ? "#425F80" : "#E2ACA5"};
+  const shareIcon = theme === "yellow" ? shareIconY : theme === "blue" ? shareIconB : shareIconP;
+  const commentIcon = theme === "yellow" ? commentIconY : theme === "blue" ? commentIconB : commentIconP;
+  const saveIcon = theme === "yellow" ? saveIconY : theme === "blue" ? saveIconB: saveIconP;
+
+  const socialData = [
+    { icon: commentIcon, title: "302 comments" },
+    { icon: shareIcon, title: "share" },
+    { icon: saveIcon, title: "save" },
+  ];
   return (
     <div className={style.container}>
       <div className={style.userInfo}>
@@ -29,19 +52,17 @@ const Question = ({ title, desc, blogImg }) => {
               }}
             >
               <img alt="icon" src={icon} />
-              <span>{title}</span>
+              <span style = {socialsColor}>{title}</span>
             </div>
           );
         })}
       </div>
     </div>
   );
+
+  
+  
 };
 
 export default Question;
 
-const socialData = [
-  { icon: commentIcon, title: "302 comments" },
-  { icon: shareIcon, title: "share" },
-  { icon: saveIcon, title: "save" },
-];

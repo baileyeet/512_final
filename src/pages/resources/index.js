@@ -1,5 +1,6 @@
 import {React, useState, useEffect, useRef} from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../../components/theme-color";
 
 
 import style from "./resources.module.scss";
@@ -10,6 +11,8 @@ import Input from "../../components/input/inedx";
 const Resources = () => {
   const [showVideo, setShowVideo] = useState(false);
   const componentRef = useRef();
+  const { theme} = useTheme();
+  const titleColor = {color: theme === "yellow" ? "#FFC562" : theme === "blue" ? "#425F80" : "#F6D1CC"};
 
   const handleClickOutside = (event) => {
     if (componentRef.current && !componentRef.current.contains(event.target)) {
@@ -38,7 +41,7 @@ const Resources = () => {
             </div>
           </div>
           <div className={style.child1}>
-            <h1 className={style.heading}>The Menosquad </h1>
+            <h1 className={style.heading} style = {titleColor}>The Menosquad </h1>
             <h1 className={style.subHeading}>#1 in Videos Today </h1>
             <div className={style.h2}>
               <p>Laura, Elise and Amber from the 

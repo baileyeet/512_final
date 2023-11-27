@@ -1,4 +1,6 @@
 import {React, useEffect, useState} from "react";
+import { useTheme } from "../../components/theme-color";
+import { Link } from "react-router-dom";
 
 import style1 from "./symptoms.module.scss";
 import style2 from "./symptoms2.module.scss";
@@ -16,6 +18,8 @@ const SymptomMap = () => {
     const [bodyPart, setBodyPart] = useState("");
     const [bodyPartHeading, setBodyPartHeading] = useState("");
     const [bodyPartDescription, setBodyPartDescription] = useState("");
+    const { theme} = useTheme();
+    const hyperlinkColor = {color: theme === "yellow" ? "#FFC562" : theme === "blue" ? "#425F80" : "#E2ACA5"};
   
     const handleHeartClicked = () => {
         console.log('heart clicked!');
@@ -145,8 +149,17 @@ const SymptomMap = () => {
                             {bodyPartDescription}
                         </div>
                         <p>Are you currently experiencing this symptom?</p>
-                        <p>Yes, bring me to <a href="/resources">Resources</a> or <a href="/community">Community</a></p>
-                        {/*<p>Yes, add this symptom to <a href="/profile">My Tracking</a></p>*/}
+                        <p>Yes, bring me to <Link
+                                            to="/resources"  style = {hyperlinkColor}>
+                                            Resources
+                                        </Link> or <Link
+                                            to="/community"  style = {hyperlinkColor}>
+                                            Community
+                                        </Link></p>
+                        <p>Yes, add this symptom to <Link
+                                            to="/tracking"  style = {hyperlinkColor}>
+                                            My Tracking
+                                        </Link></p>
                     </div>
                 </div>
             </div>

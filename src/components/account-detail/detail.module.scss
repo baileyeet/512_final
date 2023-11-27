@@ -27,11 +27,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
     p {
+      flex-shrink: 0;
       color: #f6a290;
       text-decoration: underline;
       cursor: pointer;
+      text-align: right;
     }
   }
 }

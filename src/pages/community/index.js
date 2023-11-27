@@ -19,7 +19,7 @@ const Community = () => {
     <div className={style.container}>
       <h1>Welcome to the MenoMate Community</h1>
       <p className={style.para}>
-        Explore thousands os posts, questions and conversations with people just
+        Explore thousands of posts, questions and conversations with people just
         like you
       </p>
 

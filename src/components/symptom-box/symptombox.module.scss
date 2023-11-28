@@ -1,0 +1,24 @@
+.symptomBox {
+    flex: 1;
+    flex-basis: content;
+    flex-grow: 0;
+    display: inline-flex;
+    height: 28px;
+    //width: auto;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+    p {
+        color: #000;
+        font-family: "Lato";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    
+}

@@ -1,0 +1,176 @@
+.container {
+    border-radius: 8px;
+    background: #FFF;
+    .innercontainer{
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 25px;
+        padding-top: 50px;
+    }
+    
+}
+.navigation {
+    display: flex;
+    margin-right: 30%;
+    gap: 24px;
+    .child1 {
+        flex: 1;
+        flex-basis: 0;
+        .title {
+            color: rgba(0, 0, 0, 0.80);
+            font-family: "Lato";
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        padding-right: 50px;
+    }
+    .child2 {
+        width: 15%;
+        flex: 1;
+        flex-basis: 0;
+        
+        .currentSelection { 
+            display: flex;
+            //padding: 12px 20px;
+            align-items: flex-start;
+            border-radius: 10px;
+            background: #F6D1CC;
+            color: #141414;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            text-align: center;
+            p{
+                margin-left: 10%;
+                text-align: center;
+            }
+            
+        }
+        .option {
+            display: flex;
+            color:  #7A7A7A;
+            font-family: "Inter";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            border-radius: 10px;
+            //padding: 12px 20px;
+            align-items: flex-start;
+            text-align: center;
+            cursor: pointer;
+            p{
+                margin-left: 30%;
+                text-align: center;
+            }
+        }
+    }
+    
+
+}
+.rowlog {
+    padding-left: 10%;
+    padding-right: 10%;
+    .title {
+        margin-top: 25px;
+        margin-bottom: 10px;
+        color: rgba(0, 0, 0, 0.80);
+        font-family: "Lato";
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .subtitle {
+        color: rgba(0, 0, 0, 0.80);
+        font-family: "Lato";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 10px;
+    }
+    .monthRow{
+            display: inline-flex;
+            gap: 50px;
+            flex-direction: row;
+    
+    }
+    .todayRow{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .symptomSeverityContainer{
+            flex-direction: column;
+            .symptom {
+                flex-direction: column;
+                p{
+                    flex: 1;
+                    color: #454545;
+                    font-family: "Lato";
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                }
+                //.severity{} 
+            }
+        }
+        .symptomChoicesContainer{
+            display: inline-flex;
+            flex-direction: row;
+            align-items: flex-end;
+            margin-left: 15%;
+            margin-right: 15%;
+            gap: 15px;
+            flex-wrap: wrap;
+    
+        }
+        .note {
+            //width: 799px;
+            height: 112px;
+            border-radius: 15px;
+            border: 1px solid #B4B4B4;
+            p {
+                color: #454545;
+                margin-left: 20px;
+                font-family: "Lato";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+        }
+        .logSymptomButton{
+            display: inline-flex;
+            //padding: 12px 20px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 15px;
+            background: rgba(246, 162, 144, 0.50);
+            width:15%;
+            align-self: center;
+            p {
+                color: #FFF;
+                font-family: "Lato";
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: center;
+            }  
+        }
+    }
+}
+.rowSeparator {
+    margin-top: 30px;
+    margin-left: 10%;
+    width: 80%;
+    height: 1px;
+    background: #000;
+}

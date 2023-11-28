@@ -59,5 +59,5 @@ const menuData = [
   { name: "Symptoms Map", path: "/map" },
   { name: "Resources", path: "/resources" },
   { name: "Community", path: "/community" },
-  { name: "My Tracking", path: "/tracking" },
+  //{ name: "My Tracking", path: "/tracking" },
 ];

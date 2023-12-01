@@ -19,21 +19,22 @@ import coldFlashesIcon from "../../assets/tracking-coldFlashes.svg";
 import anxietyIcon from "../../assets/tracking-anxiety.svg";
 import concetrationIcon from "../../assets/tracking-concetration.svg";
 import nightsweatsIcon from "../../assets/tracking-nightsweats.svg";
+import LogModal from "../../components/log-modal";
+import TrendsGraph from "../../components/trends-graph"
 
 const SymptomTracking = () => {
   const [showVideo, setShowVideo] = useState(false);
   const componentRef = useRef();
   const { theme} = useTheme();
   const headingBackgroundColor = {background: theme === "yellow" ? "#FFE6BB" : theme === "blue" ? "#E4F1E5" : "#FFEDEB"};
-  const chosenBoxStyle = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.50)" : 
-                                    theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
-                                    "rgba(246, 162, 144, 0.50)",
-                        border: theme === "yellow" ? "2px solid rgba(255, 197, 98, 0.50)":
-                                theme === "blue" ? "2px solid rgba(66, 95, 128, 0.50)":
-                                "2px solid rgba(246, 162, 144, 0.50)"};
   const logSymtpomsBGColor = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.50)" : 
                                 theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                 "rgba(246, 162, 144, 0.50)"}
+
+const [isModalOpen, setModalOpen] = useState(false);
+
+const openModal = () => setModalOpen(true);
+const closeModal = () => setModalOpen(false);
 
 
   const handleClickOutside = (event) => {
@@ -50,7 +51,12 @@ const SymptomTracking = () => {
   }, []);
 
     return (
-      <div className={style.container}>
+    <div className={style.container}>
+        <div className = {style.modalContainer}>
+        <LogModal isOpen={isModalOpen} onClose={closeModal} />
+        </div>
+        
+      <div className={style.mainContainer}>
         <div className={style.innercontainer}>
             <div className={style.navigation}>
                 <div className={style.child1}>
@@ -122,7 +128,7 @@ const SymptomTracking = () => {
                     <div className={style.note}>
                         <p>Notes:</p>
                     </div>
-                    <div className={style.logSymptomButton} style= {logSymtpomsBGColor}>
+                    <div className={style.logSymptomButton} style= {logSymtpomsBGColor} onClick={openModal}>
                         <p>Log Symptoms</p>
                     </div>
                 </div>
@@ -134,8 +140,11 @@ const SymptomTracking = () => {
                 <div className={style.title}>
                     Insights
                 </div>
+                <TrendsGraph></TrendsGraph>
             </div>
+            
         </div>
+      </div>
       </div>
     );
   };

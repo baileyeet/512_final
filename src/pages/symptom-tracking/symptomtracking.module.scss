@@ -1,4 +1,4 @@
-.container {
+.mainContainer {
     border-radius: 8px;
     background: #FFF;
     .innercontainer{
@@ -6,8 +6,16 @@
         margin-right: 50px;
         margin-top: 25px;
         padding-top: 50px;
+        padding-bottom: 50px;
     }
     
+}
+.modalContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; //Set a higher z-index to make this component appear on top
 }
 .navigation {
     display: flex;
@@ -155,6 +163,7 @@
             background: rgba(246, 162, 144, 0.50);
             width:15%;
             align-self: center;
+            cursor: pointer;
             p {
                 color: #FFF;
                 font-family: "Lato";

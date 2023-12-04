@@ -26,7 +26,7 @@ const SymptomTracking = () => {
   const [showVideo, setShowVideo] = useState(false);
   const componentRef = useRef();
   const { theme} = useTheme();
-  const headingBackgroundColor = {background: theme === "yellow" ? "#FFE6BB" : theme === "blue" ? "#E4F1E5" : "#FFEDEB"};
+  const headingBackgroundColor = {background: theme === "yellow" ? "#FFE6BB" : theme === "blue" ? "#E4F1E5" : "#F6D1CC"};
   const logSymtpomsBGColor = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.50)" : 
                                 theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                 "rgba(246, 162, 144, 0.50)"}
@@ -64,6 +64,11 @@ const closeModal = () => setModalOpen(false);
                 </div>
                 <div className={style.child2}>
                     <div className={style.currentSelection} style={headingBackgroundColor}>
+                        <p>Today's Log</p>
+                    </div>
+                </div>
+                <div className={style.child2}>
+                    <div className={style.option} >
                         <p>Monthly Calendar</p>
                     </div>
                 </div>
@@ -72,45 +77,16 @@ const closeModal = () => setModalOpen(false);
                         <p>Weekly Log</p>
                     </div>
                 </div>
-                <div className={style.child2}>
-                    <div className={style.option}>
-                        <p>Today's Log</p>
-                    </div>
-                </div>
+                
                 <div className={style.child2}>
                     <div className={style.option}>
                         <p>Insights</p>
                     </div>
                 </div>
             </div>
-            {/* Monthly Log */}
-            <div className={style.rowlog}>
-                <div className={style.title}>
-                    Monthly Calendar
-                    
-                </div>
-                <div className={style.monthRow}>
-                    <LogTracker trackerType= {"month"} month={"Apr"}></LogTracker>
-                    <LogTracker trackerType= {"month"} month={"May"}></LogTracker>
-
-                </div>
-                
-            </div>
-            <div className={style.rowSeparator}></div>
-            {/* Weekly Log */}
-            <div className={style.rowlog}>
-                <div className={style.title}>
-                    This Week's Log
-                </div>
-                <div className={style.subtitle}>
-                    Monday, May 18 - Sunday, May 24
-                </div>
-                <LogTracker trackerType= {"week"}></LogTracker>
-            </div>
-            <div className={style.rowSeparator}></div>
             {/* Today's Log */}
             <div className={style.rowlog}>
-                <div className={style.title}>
+                <div className={style.title} style={{textAlign: "left"}}>
                     Today's Log
                 </div>
                 <div className={style.subtitle}>
@@ -135,9 +111,36 @@ const closeModal = () => setModalOpen(false);
                 
             </div>
             <div className={style.rowSeparator}></div>
-            {/* Insights Log */}
+            {/* Monthly Log */}
             <div className={style.rowlog}>
                 <div className={style.title}>
+                    Monthly Calendar
+                    
+                </div>
+                <div className={style.monthRow}>
+                    <LogTracker trackerType= {"month"} month={"Apr"}></LogTracker>
+                    
+                </div>
+                
+            </div>
+            <div className={style.rowSeparator}></div>
+            {/* Weekly Log */}
+            <div className={style.rowlog}>
+                <div className={style.title}>
+                    This Week's Log
+                </div>
+                <div className={style.subtitle} style={{textAlign: "center"}}>
+                    Monday, May 18 - Sunday, May 24
+                </div>
+                <div className={style.weeklyRow}>
+                    <LogTracker trackerType= {"week"}></LogTracker>
+                </div>
+            </div>
+            <div className={style.rowSeparator}></div>
+            
+            {/* Insights Log */}
+            <div className={style.rowlog}>
+                <div className={style.title} style={{textAlign: "left"}}>
                     Insights
                 </div>
                 <TrendsGraph></TrendsGraph>

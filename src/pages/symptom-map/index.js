@@ -26,6 +26,7 @@ const SymptomMap = () => {
         setMapStage("stage2");
     };
     const backArrowClicked = () => {
+        console.log('back to stage 2');
         setMapStage("stage2");
     };
     const handleDotClicked = (bodyPartChosen) => {
@@ -122,13 +123,18 @@ const SymptomMap = () => {
     }
     const momoStage3 = () => {
         return (
-            <div className={style3.container}>
+            <div className={style3.container} onClick = {backArrowClicked}>
                 <div className={style3.headline}>
                 Try moving your cursor over different body parts.
                 </div>
-                <div className={style3.childContainer}>
+                <div className={style3.childContainer} >
                     <div className={style3.child1}>
-                        <div></div>
+                        <div className={style3.infoHeading}>
+                            {bodyPartHeading}
+                        </div>
+                        <div className={style3.infoDescription}>
+                            {bodyPartDescription}
+                        </div>
                     </div>
                     <div className={style3.child2}>
                     <div className={style3.imageContainer}>
@@ -138,16 +144,9 @@ const SymptomMap = () => {
                     </div>
                     </div>
                     <div className={style3.child3}>
-                    <div className={style3.back}onClick={backArrowClicked}>
-                        <img alt="arrow" src={rightArrowImg} />
-                             Back
+                        <div className={style3.back}onClick={backArrowClicked}>
                         </div>
-                        <div className={style3.infoHeading}>
-                            {bodyPartHeading}
-                        </div>
-                        <div className={style3.infoDescription}>
-                            {bodyPartDescription}
-                        </div>
+                       
                         <p>Are you currently experiencing this symptom?</p>
                         <p>Yes, bring me to <Link
                                             to="/resources"  style = {hyperlinkColor}>

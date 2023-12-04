@@ -15,7 +15,27 @@
         .child1{
             flex: 1;
             flex-basis: 0;
+            width: 100%;
             box-sizing: border-box;
+            margin-left: 50px;
+            .infoHeading {
+                color: rgba(0, 0, 0, 0.80);
+                font-family: "Lato";
+                font-size: 40px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin-top: 30%;
+                margin-bottom: 20px;
+            }
+            .infoDescription {
+                color: #000;
+                font-family: "Lato";
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
         }
         .child2{
             flex: 1;
@@ -78,7 +98,7 @@
                 margin-right: 10px;
             }
             .back {
-                margin-top: 100px;
+                margin-top: 30%;
                 color: #000;
                 font-family: "Lato";
                 font-size: 22px;

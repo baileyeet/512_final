@@ -40,6 +40,12 @@ const SymptomTable = ({isToday}) => {
                       symptom.symptomName === symptomName ? { ...symptom, severity: severityData } : symptom
                     )
                 );
+                //Update box button to true if not already
+                setTodaySymptomBoxData(prevData =>
+                    prevData.map(symptom =>
+                      symptom.symptomName === symptomName ? { ...symptom, isChosen: true } : symptom
+                    )
+                );
                 
             };
             
@@ -75,10 +81,10 @@ const SymptomTable = ({isToday}) => {
                 if (isChosen) {
                     //already chosen -> need to remove from sampleSymptomData
                     console.log(symptomName + ' removing from symptom row!');
+                    //remove row
                     setTodayDataList(prevData =>
                         prevData.filter(symptom => symptom.symptomName !== symptomName)
                       );
-                    //remove row
                 } else {
                     //add to sampleSymptom Data
                     console.log(symptomName + ' adding to symptom row!');
@@ -119,7 +125,7 @@ const SymptomTable = ({isToday}) => {
         const sampleSymptomDataHistory = [
             {   symptomName: "Vaginal Dryness",
                 icon: vaginalIcon,
-                severity: "mild"},
+                severity: "severe"},
             {   symptomName: "Joint/Muscle Pain",
                 icon: jointMuscleIcon,
                 severity: "mild"},

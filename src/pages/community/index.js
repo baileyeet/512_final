@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState, useEffect, useRef} from "react";
 
 import Button from "../../components/button";
 import Input from "../../components/input/inedx";
@@ -13,54 +13,82 @@ import blogImg1 from "../../assets/blogImg1.png";
 import blogImg2 from "../../assets/blogImg2.png";
 import style from "./community.module.scss";
 import Question from "../../components/question";
+import CreatePostModal from "../../components/create-post-modal";
 
 const Community = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const componentRef = useRef();
+    const openModal = () => {
+      setModalOpen(true)
+      console.log("modal open")};
+    const closeModal = () => setModalOpen(false);
+
+    const handleClickOutside = (event) => {
+      if (componentRef.current && !componentRef.current.contains(event.target)) {
+        setModalOpen(false);
+      }
+    };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   return (
-    <div className={style.container}>
-      <h1>Welcome to the MenoMate Community</h1>
-      <p className={style.para}>
-        Explore thousands of posts, questions and conversations with people just
-        like you
-      </p>
-
-      <div className={style.inputSection}>
-        <div className={style.inputDiv}>
-          <Input />
-        </div>
-        <div className={style.btns}>
-          <Button
-            title={"New Post"}
-            icon={plusIcon}
-            className={style.filterBtn}
-          />
-          <Button title={"Filter"} icon={filterIcon} />
-        </div>
+    <div className={style.bigContainer}>
+      <div className = {style.modalContainer} ref = {componentRef}>
+        <CreatePostModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
+      <div className={style.container}>
+        <h1>Welcome to the MenoMate Community</h1>
+        <p className={style.para}>
+          Explore thousands of posts, questions and conversations with people just
+          like you
+        </p>
 
-      {/* button section */}
-
-      <div className={style.parent}>
-        <img src={img1} alt="img" />
-        <img src={img2} alt="img" />
-        <img src={img3} alt="img" />
-        <div className={style.child}>
-          {textBoxData?.map(({ title }, i) => {
-            return (
-              <div>
-                <TextBox title={title} />
-              </div>
-            );
-          })}
+        <div className={style.inputSection}>
+          <div className={style.inputDiv}>
+            <Input />
+          </div>
+          <div className={style.btns}>
+            <div onClick={openModal}>
+            <Button
+              title={"New Post"}
+              icon={plusIcon}
+              className={style.filterBtn}
+              onClick={openModal}
+            />
+            </div>
+            <Button title={"Filter"} icon={filterIcon} />
+          </div>
         </div>
+
+        {/* button section */}
+
+        <div className={style.parent}>
+          <img src={img1} alt="img" />
+          <img src={img2} alt="img" />
+          <img src={img3} alt="img" />
+          <div className={style.child}>
+            {textBoxData?.map(({ title }, i) => {
+              return (
+                <div>
+                  <TextBox title={title} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* plus btn  */}
+
+        {/* Questions */}
+
+        {blogData?.map(({ title, desc, blogImg }) => {
+          return <Question title={title} desc={desc} blogImg={blogImg} />;
+        })}
       </div>
-
-      {/* plus btn  */}
-
-      {/* Questions */}
-
-      {blogData?.map(({ title, desc, blogImg }) => {
-        return <Question title={title} desc={desc} blogImg={blogImg} />;
-      })}
     </div>
   );
 };

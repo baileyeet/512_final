@@ -31,7 +31,8 @@ const SymptomTracking = () => {
                                 theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                 "rgba(246, 162, 144, 0.50)"}
 
-const [isModalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [logSymptomsText, setLogSymptomsText]  = useState("Log Symptoms")
 
 const openModal = () => setModalOpen(true);
 const closeModal = () => setModalOpen(false);
@@ -41,6 +42,11 @@ const closeModal = () => setModalOpen(false);
     if (componentRef.current && !componentRef.current.contains(event.target)) {
       setShowVideo(false);
     }
+  };
+
+  const handleCompletedLog = () => {
+    console.log("symptom logging completed")
+    setLogSymptomsText('Thanks for Logging!')
   };
 
   useEffect(() => {
@@ -94,18 +100,13 @@ const closeModal = () => setModalOpen(false);
                 </div>
                 <div className={style.todayRow}>
                     <div className={style.symptomSeverityContainer}>
-                        <SymptomTable></SymptomTable>
-                    </div>
-                    <div className={style.symptomChoicesContainer}>
-                        {symptomBoxData?.map(({symptomName, icon, isChosen}) => {
-                            return <SymptomBox icon = {icon} symptomName={symptomName} isClicked={isChosen}/>;
-                        })}
+                        <SymptomTable isToday={true}></SymptomTable>
                     </div>
                     <div className={style.note}>
                         <p>Notes:</p>
                     </div>
-                    <div className={style.logSymptomButton} style= {logSymtpomsBGColor} onClick={openModal}>
-                        <p>Log Symptoms</p>
+                    <div className={style.logSymptomButton} style= {logSymtpomsBGColor} onClick={() => handleCompletedLog()}>
+                        <p>{logSymptomsText}</p>
                     </div>
                 </div>
                 
@@ -164,7 +165,7 @@ const closeModal = () => setModalOpen(false);
         isChosen: false},
         {   symptomName: "Vaginal Dryness",
         icon: vaginalIcon,
-        isChosen: true},
+        isChosen: false},
         {   symptomName: "Concentration Issues",
         icon: concetrationIcon,
         isChosen: false},
@@ -176,10 +177,10 @@ const closeModal = () => setModalOpen(false);
         isChosen: false},
         {   symptomName: "Joint/Muscle Pain",
         icon: musclePainIcon,
-        isChosen: true},
+        isChosen: false},
         {   symptomName: "Sleep Disturbances",
         icon: sleepIcon,
-        isChosen: true},
+        isChosen: false},
 
   ];
   export default SymptomTracking;

@@ -11,10 +11,14 @@ import pinkCircle from "../../assets/tracking-pinkCircle.svg";
 import whiteCircle from "../../assets/tracking-whiteCircle.svg";
 import yellowCircle from "../../assets/tracking-yellowCircle.svg";
 import blueCircle from "../../assets/tracking-blueCircle.svg";
+import LogModal from "../../components/log-modal";
 
 
 const Day = ({color, isNumber, dayText}) => {
+    const componentRef = useRef();
     const { theme} = useTheme();
+    const [showVideo, setShowVideo] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
     const coloredCircle = theme === "yellow" ? yellowCircle : theme === "blue" ? blueCircle : pinkCircle;
     const colorWheel = color === "gray" ? grayCircle : color === "white" ? whiteCircle: coloredCircle;
     const dayType = isNumber ? dailyStyle.dayNumber: 
@@ -30,13 +34,41 @@ const Day = ({color, isNumber, dayText}) => {
                                         theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                         "rgba(246, 162, 144, 0.50)" ) : "#FFF"};
     const backgroundColorStyle = isNumber ? {} : backgroundColor; 
+    const isClickable = color === "gray" ? {} : {cursor : "pointer"}
+
+    const openModal = () => {
+        if (color === "pink") {
+            setModalOpen(true);
+        }
+    }
+
+    const closeModal = () => setModalOpen(false);
+
+
+  const handleClickOutside = (event) => {
+    if (componentRef.current && !componentRef.current.contains(event.target)) {
+      setShowVideo(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
     return (
-        <div className={dailyStyle.container}>
+        <div>
+            <div className = {dailyStyle.modalContainer}>
+                <LogModal isOpen={isModalOpen} onClose={closeModal} />
+            </div>
+        <div className={dailyStyle.container} style = {isClickable} onClick={openModal}>
             <div className={dayType} style={backgroundColorStyle}>
                 {dayText}
             </div>
             <img alt="icon" src={colorWheel} />
+        </div>
         </div>
     );
 }

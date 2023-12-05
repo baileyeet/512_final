@@ -12,10 +12,15 @@ const SymptomBox = ({symptomName, icon, isClicked}) => {
                         border: theme === "yellow" ? "2px solid rgba(255, 197, 98, 0.50)":
                                 theme === "blue" ? "2px solid rgba(66, 95, 128, 0.50)":
                                 "2px solid rgba(246, 162, 144, 0.50)"};
-    const boxStyle = isClicked ? chosenBoxStyle: {};
-    const pStyle = isClicked ? {color: "#FFF"} : {};
+    const [isChosen, setIsChosen] = useState(isClicked);
+    const boxStyle = isChosen ? chosenBoxStyle: {};
+    const pStyle = isChosen ? {color: "#FFF"} : {};
+    const handleHeartClicked = () => {
+        console.log(symptomName + 'clicked!');
+        setIsChosen(!isChosen);
+    };
     return (
-            <div className={style.symptomBox} style = {boxStyle}>
+            <div className={style.symptomBox} style = {boxStyle} onClick={handleHeartClicked}>
                 {icon ? <img alt="icon" src={icon} />: <></>}
                 <p style = {pStyle}>{symptomName}</p>
             </div>

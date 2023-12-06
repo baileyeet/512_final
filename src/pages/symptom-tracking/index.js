@@ -34,8 +34,8 @@ const SymptomTracking = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [logSymptomsText, setLogSymptomsText]  = useState("Log Symptoms")
 
-const openModal = () => setModalOpen(true);
-const closeModal = () => setModalOpen(false);
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
 
 
   const handleClickOutside = (event) => {

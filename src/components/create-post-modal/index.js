@@ -18,7 +18,8 @@ const categoryData = [
   ];
 
 const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
-    const [inputValue, setInputValue] = useState('hi');
+    const [inputTitleValue, setInputTitleValue] = useState('');
+    const [inputBodyValue, setInputBodyValue] = useState('');
 
     const { theme} = useTheme();
   if (!isOpen) return null;
@@ -29,14 +30,20 @@ const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
   const category = startingCategory ? startingCategory : "Mental Health";
 
   
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+  const handleTitleInputChange = (event) => {
+    setInputTitleValue(event.target.value);
+  };
+  const handleBodyInputChange = (event) => {
+    setInputBodyValue(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     // Your logic for handling form submission with the input value
-    console.log('Submitted value:', inputValue);
+    console.log('Submitted value:', inputTitleValue);
+    setInputTitleValue("");
+    setInputBodyValue("");
+    onClose();
   };
   return (
     <div className="modal">
@@ -62,24 +69,22 @@ const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
                         </div>
                     </div>
                     <div className={style.titleBox}>
-                        <p>Title...</p>
-                        {/*<form onSubmit={handleSubmit}>
-                            <label>
-                            Title..
-                                <input
+                            <input
                                 type="text"
-                                value={inputValue}
-                                onChange={handleInputChange}
+                                value={inputTitleValue}
+                                onChange={handleTitleInputChange}
+                                placeholder="Title..."
                                 />
-                            </label>
-
-                            <button type="submit">Submit</button>
-                                </form>*/}
                     </div>
                     <div className={style.bodyBox}>
-                        <p>Body Text...</p>
+                                <textarea
+                                type="text"
+                                value={inputBodyValue}
+                                onChange={handleBodyInputChange}
+                                placeholder="Body Text..."
+                                />
                     </div>
-                    <div className={style.postButton} style= {postBGColor} onClick={onClose}>
+                    <div className={style.postButton} style= {postBGColor} onClick={handleSubmit}>
                         <p>Post</p>
                     </div>
                 </div>

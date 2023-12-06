@@ -23,44 +23,49 @@ import LogModal from "../../components/log-modal";
 import TrendsGraph from "../../components/trends-graph"
 
 const SymptomTracking = () => {
-  const [showVideo, setShowVideo] = useState(false);
-  const componentRef = useRef();
+ // const [showVideo, setShowVideo] = useState(false);
+  //const componentRef = useRef();
   const { theme} = useTheme();
   const headingBackgroundColor = {background: theme === "yellow" ? "#FFE6BB" : theme === "blue" ? "#E4F1E5" : "#F6D1CC"};
   const logSymtpomsBGColor = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.50)" : 
                                 theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                 "rgba(246, 162, 144, 0.50)"}
 
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [logSymptomsText, setLogSymptomsText]  = useState("Log Symptoms")
+    //const [isModalOpen, setModalOpen] = useState(false);
+    const [logSymptomsText, setLogSymptomsText]  = useState("Log Symptoms");
+    const [inputNote, setInputNote] = useState('');
+    const handleNoteChange = (event) => {
+        setInputNote(event.target.value);
+    };
 
-    const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
+
+   //const openModal = () => setModalOpen(true);
+    //const closeModal = () => setModalOpen(false);
 
 
-  const handleClickOutside = (event) => {
+  /*const handleClickOutside = (event) => {
     if (componentRef.current && !componentRef.current.contains(event.target)) {
       setShowVideo(false);
     }
-  };
+  };*/
 
   const handleCompletedLog = () => {
     console.log("symptom logging completed")
     setLogSymptomsText('Thanks for Logging!')
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, []);*/
 
     return (
     <div className={style.container}>
-        <div className = {style.modalContainer}>
+        {/*<div className = {style.modalContainer}>
         <LogModal isOpen={isModalOpen} onClose={closeModal} />
-        </div>
+    </div>*/}
         
       <div className={style.mainContainer}>
         <div className={style.innercontainer}>
@@ -103,7 +108,13 @@ const SymptomTracking = () => {
                         <SymptomTable isToday={true}></SymptomTable>
                     </div>
                     <div className={style.note}>
-                        <p>Notes:</p>
+
+                        <textarea
+                                type="text"
+                                value={inputNote}
+                                onChange={handleNoteChange}
+                                placeholder="Notes:"
+                                />
                     </div>
                     <div className={style.logSymptomButton} style= {logSymtpomsBGColor} onClick={() => handleCompletedLog()}>
                         <p>{logSymptomsText}</p>
@@ -167,10 +178,10 @@ const SymptomTracking = () => {
         icon: vaginalIcon,
         isChosen: false},
         {   symptomName: "Concentration Issues",
-        icon: concetrationIcon,
+        icon: nightsweatsIcon,
         isChosen: false},
         {   symptomName: "Hot Flashes",
-        icon: concetrationIcon,
+        icon: nightsweatsIcon,
         isChosen: false},
         {   symptomName: "Night Sweats",
         icon: nightsweatsIcon,

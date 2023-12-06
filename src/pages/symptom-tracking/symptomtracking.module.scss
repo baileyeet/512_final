@@ -154,15 +154,23 @@
             //width: 799px;
             height: 112px;
             border-radius: 15px;
-            border: 1px solid #B4B4B4;
-            p {
+            //border: 1px solid #B4B4B4;
+            textarea{
                 color: #454545;
-                margin-left: 20px;
                 font-family: "Lato";
                 font-size: 18px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: normal;
+                height: 112px;
+                padding: 10px 10px 10px 10px;
+                border-radius: 15px;
+                border: 1px solid #B4B4B4;
+                max-height: 100% ;
+                max-width: 100%;
+                min-width: 100%;
+                min-height: 100%;
+                box-sizing:  border-box;
             }
         }
         .logSymptomButton{

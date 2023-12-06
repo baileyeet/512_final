@@ -18,9 +18,16 @@ import CreatePostModal from "../../components/create-post-modal";
 const Community = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const componentRef = useRef();
+  const [postCategory, setPostCategory] = useState("Mental Health");
+
+  const categoryClicked = (category) => {
+    setPostCategory(category);
+    setModalOpen(true);
+  }
     const openModal = () => {
       setModalOpen(true)
-      console.log("modal open")};
+      console.log("modal open")
+    };
     const closeModal = () => setModalOpen(false);
 
     const handleClickOutside = (event) => {
@@ -38,7 +45,7 @@ const Community = () => {
   return (
     <div className={style.bigContainer}>
       <div className = {style.modalContainer} ref = {componentRef}>
-        <CreatePostModal isOpen={isModalOpen} onClose={closeModal} />
+        <CreatePostModal isOpen={isModalOpen} onClose={closeModal} startingCategory={postCategory}/>
       </div>
       <div className={style.container}>
         <h1>Welcome to the MenoMate Community</h1>
@@ -73,7 +80,7 @@ const Community = () => {
           <div className={style.child}>
             {textBoxData?.map(({ title }, i) => {
               return (
-                <div>
+                <div onClick = {() => categoryClicked(title)}>
                   <TextBox title={title} />
                 </div>
               );

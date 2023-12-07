@@ -23,49 +23,34 @@ import LogModal from "../../components/log-modal";
 import TrendsGraph from "../../components/trends-graph"
 
 const SymptomTracking = () => {
- // const [showVideo, setShowVideo] = useState(false);
-  //const componentRef = useRef();
+
   const { theme} = useTheme();
   const headingBackgroundColor = {background: theme === "yellow" ? "#FFE6BB" : theme === "blue" ? "#E4F1E5" : "#F6D1CC"};
   const logSymtpomsBGColor = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.50)" : 
                                 theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                 "rgba(246, 162, 144, 0.50)"}
 
-    //const [isModalOpen, setModalOpen] = useState(false);
     const [logSymptomsText, setLogSymptomsText]  = useState("Log Symptoms");
     const [inputNote, setInputNote] = useState('');
+    const [monthData, setMonthData] = useState(sampleMonthData);
     const handleNoteChange = (event) => {
         setInputNote(event.target.value);
     };
 
-
-   //const openModal = () => setModalOpen(true);
-    //const closeModal = () => setModalOpen(false);
-
-
-  /*const handleClickOutside = (event) => {
-    if (componentRef.current && !componentRef.current.contains(event.target)) {
-      setShowVideo(false);
-    }
-  };*/
-
   const handleCompletedLog = () => {
     console.log("symptom logging completed")
+     //Update logged symptoms
+     setMonthData(prevData =>
+        prevData.map(symptom =>
+          symptom.dayText === "28" ? { ...symptom, color: "pink" } : symptom
+        )
+    );
     setLogSymptomsText('Thanks for Logging!')
   };
 
-  /*useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);*/
 
     return (
     <div className={style.container}>
-        {/*<div className = {style.modalContainer}>
-        <LogModal isOpen={isModalOpen} onClose={closeModal} />
-    </div>*/}
         
       <div className={style.mainContainer}>
         <div className={style.innercontainer}>
@@ -130,7 +115,7 @@ const SymptomTracking = () => {
                     
                 </div>
                 <div className={style.monthRow}>
-                    <LogTracker trackerType= {"month"} month={"Apr"}></LogTracker>
+                    <LogTracker trackerType= {"month"} month={"Apr"} monthData={monthData}></LogTracker>
                     
                 </div>
                 
@@ -145,7 +130,7 @@ const SymptomTracking = () => {
                     Sunday, April 24 - Saturday, April 30
                 </div>
                 <div className={style.weeklyRow}>
-                    <LogTracker trackerType= {"week"}></LogTracker>
+                    <LogTracker trackerType= {"week"} monthData={monthData}></LogTracker>
                 </div>
             </div>
             <div className={style.rowSeparator}></div>
@@ -194,4 +179,98 @@ const SymptomTracking = () => {
         isChosen: false},
 
   ];
+
+  const sampleMonthData = [
+    {   dayText: "1",
+        color: "pink",
+        dayOfWeek: "Friday",
+    },
+    {   dayText: "2",
+        color: "pink",
+        dayOfWeek: "Saturday",},
+    {   dayText: "3",
+        color: "pink",
+        dayOfWeek: "Sunday",},
+    {   dayText: "4",
+        color: "pink",
+        dayOfWeek: "Monday",},
+    {   dayText: "5",
+        color: "pink",
+        dayOfWeek: "Tuesday",},
+    {   dayText: "6",
+        color: "pink",
+        dayOfWeek: "Wednesday",},
+    {   dayText: "7",
+        color: "pink",
+        dayOfWeek: "Thursday",},
+    {   dayText: "8",
+        color: "pink",
+        dayOfWeek: "Friday",},
+    {   dayText: "9",
+        color: "pink",
+        dayOfWeek: "Saturday",},
+    {   dayText: "10",
+        color: "pink",
+        dayOfWeek: "Sunday",},
+    {   dayText: "11",
+        color: "pink",
+        dayOfWeek: "Monday",},
+    {   dayText: "12",
+        color: "gray",
+        dayOfWeek: "Tuesday",},
+    {   dayText: "13",
+        color: "pink",
+        dayOfWeek: "Wednesday",},
+    {   dayText: "14",
+        color: "pink",
+        dayOfWeek: "Thursday",},
+    {   dayText: "15",
+        color: "pink",
+        dayOfWeek: "Friday",},
+    {   dayText: "16",
+        color: "pink",
+        dayOfWeek: "Saturday",},
+    {   dayText: "17",
+        color: "pink",
+        dayOfWeek: "Sunday",},
+    {   dayText: "18",
+        color: "pink",
+        dayOfWeek: "Monday",},
+    {   dayText: "19",
+        color: "pink",
+        dayOfWeek: "Tuesday",},
+    {   dayText: "20",
+        color: "gray",
+        dayOfWeek: "Wednesday",},
+    {   dayText: "21",
+        color: "gray",
+        dayOfWeek: "Thursday",},
+    {   dayText: "22",
+        color: "gray",
+        dayOfWeek: "Friday",},
+    {   dayText: "23",
+        color: "pink",
+        dayOfWeek: "Saturday",},
+    {   dayText: "24",
+        color: "pink",
+        dayOfWeek: "Sunday",},
+    {   dayText: "25",
+        color: "pink",
+        dayOfWeek: "Monday",},
+    {   dayText: "26",
+        color: "gray",
+        dayOfWeek: "Tuesday",},
+    {   dayText: "27",
+        color: "pink",
+        dayOfWeek: "Wednesday",},
+    {   dayText: "28",
+        color: "white",
+        dayOfWeek: "Thursday",},
+    {   dayText: "29",
+        color: "white",
+        dayOfWeek: "Friday",},
+    {   dayText: "30",
+        color: "white",
+        dayOfWeek: "Saturday",},
+]
   export default SymptomTracking;

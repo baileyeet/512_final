@@ -14,7 +14,7 @@ import blueCircle from "../../assets/tracking-blueCircle.svg";
 import LogModal from "../../components/log-modal";
 
 
-const Day = ({color, isNumber, dayText}) => {
+const Day = ({color, isNumber, day, dayOfWeek}) => {
     const componentRef = useRef();
     const { theme} = useTheme();
     const [showVideo, setShowVideo] = useState(false);
@@ -35,6 +35,7 @@ const Day = ({color, isNumber, dayText}) => {
                                         "rgba(246, 162, 144, 0.50)" ) : "#FFF"};
     const backgroundColorStyle = isNumber ? {} : backgroundColor; 
     const isClickable = color === "gray" ? {} : {cursor : "pointer"}
+    const dayText = isNumber ? day: dayOfWeek[0];
 
     const openModal = () => {
         if (color === "pink") {
@@ -61,7 +62,7 @@ const Day = ({color, isNumber, dayText}) => {
     return (
         <div>
             <div className = {dailyStyle.modalContainer}>
-                <LogModal isOpen={isModalOpen} onClose={closeModal} />
+                <LogModal isOpen={isModalOpen} onClose={closeModal} day={day} dayOfWeek={dayOfWeek}/>
             </div>
         <div className={dailyStyle.container} style = {isClickable} onClick={openModal}>
             <div className={dayType} style={backgroundColorStyle}>
@@ -74,6 +75,8 @@ const Day = ({color, isNumber, dayText}) => {
 }
 
 const sampleWeekData = [
+    {   dayOfWeek: "S",
+    color: "pink",},
         {   dayOfWeek: "M",
             color: "pink",},
         {   dayOfWeek: "T",
@@ -81,107 +84,106 @@ const sampleWeekData = [
         {   dayOfWeek: "W",
             color: "pink",},
         {   dayOfWeek: "T",
-            color: "pink",},
+            color: "white",},
         {   dayOfWeek: "F",
             color: "white",},
         {   dayOfWeek: "S",
             color: "white",},
-        {   dayOfWeek: "S",
-            color: "white",},
+
         
 ];
 const sampleMonthData = [
         {   dayText: "1",
             color: "pink",
-            dayOfWeek: "S",
+            dayOfWeek: "Friday",
         },
         {   dayText: "2",
             color: "pink",
-            dayOfWeek: "S",},
+            dayOfWeek: "Saturday",},
         {   dayText: "3",
             color: "pink",
-            dayOfWeek: "M",},
+            dayOfWeek: "Sunday",},
         {   dayText: "4",
             color: "pink",
-            dayOfWeek: "T",},
+            dayOfWeek: "Monday",},
         {   dayText: "5",
             color: "pink",
-            dayOfWeek: "W",},
+            dayOfWeek: "Tuesday",},
         {   dayText: "6",
             color: "pink",
-            dayOfWeek: "T",},
+            dayOfWeek: "Wednesday",},
         {   dayText: "7",
             color: "pink",
-            dayOfWeek: "F",},
+            dayOfWeek: "Thursday",},
         {   dayText: "8",
             color: "pink",
-            dayOfWeek: "S",},
+            dayOfWeek: "Friday",},
         {   dayText: "9",
             color: "pink",
-            dayOfWeek: "S",},
+            dayOfWeek: "Saturday",},
         {   dayText: "10",
             color: "pink",
-            dayOfWeek: "M",},
+            dayOfWeek: "Sunday",},
         {   dayText: "11",
             color: "pink",
-            dayOfWeek: "T",},
+            dayOfWeek: "Monday",},
         {   dayText: "12",
             color: "gray",
-            dayOfWeek: "W",},
+            dayOfWeek: "Tuesday",},
         {   dayText: "13",
             color: "pink",
-            dayOfWeek: "T",},
+            dayOfWeek: "Wednesday",},
         {   dayText: "14",
             color: "pink",
-            dayOfWeek: "F",},
+            dayOfWeek: "Thursday",},
         {   dayText: "15",
             color: "pink",
-            dayOfWeek: "S",},
+            dayOfWeek: "Friday",},
         {   dayText: "16",
             color: "pink",
-            dayOfWeek: "S",},
+            dayOfWeek: "Saturday",},
         {   dayText: "17",
             color: "pink",
-            dayOfWeek: "M",},
+            dayOfWeek: "Sunday",},
         {   dayText: "18",
             color: "pink",
-            dayOfWeek: "T",},
+            dayOfWeek: "Monday",},
         {   dayText: "19",
             color: "pink",
-            dayOfWeek: "W",},
+            dayOfWeek: "Tuesday",},
         {   dayText: "20",
             color: "gray",
-            dayOfWeek: "T",},
+            dayOfWeek: "Wednesday",},
         {   dayText: "21",
             color: "gray",
-            dayOfWeek: "F",},
+            dayOfWeek: "Thursday",},
         {   dayText: "22",
             color: "gray",
-            dayOfWeek: "S",},
+            dayOfWeek: "Friday",},
         {   dayText: "23",
             color: "pink",
-            dayOfWeek: "S",},
+            dayOfWeek: "Saturday",},
         {   dayText: "24",
-            color: "gray",
-            dayOfWeek: "M",},
-        {   dayText: "25",
-            color: "gray",
-            dayOfWeek: "T",},
-        {   dayText: "26",
             color: "pink",
-            dayOfWeek: "W",},
+            dayOfWeek: "Sunday",},
+        {   dayText: "25",
+            color: "pink",
+            dayOfWeek: "Monday",},
+        {   dayText: "26",
+            color: "gray",
+            dayOfWeek: "Tuesday",},
         {   dayText: "27",
             color: "pink",
-            dayOfWeek: "T",},
+            dayOfWeek: "Wednesday",},
         {   dayText: "28",
-            color: "pink",
-            dayOfWeek: "F",},
+            color: "white",
+            dayOfWeek: "Thursday",},
         {   dayText: "29",
-            color: "pink",
-            dayOfWeek: "S",},
+            color: "white",
+            dayOfWeek: "Friday",},
         {   dayText: "30",
-            color: "pink",
-            dayOfWeek: "S",},
+            color: "white",
+            dayOfWeek: "Saturday",},
 ]
 
 const LogTracker = ({trackerType, month}) => {
@@ -191,8 +193,8 @@ const LogTracker = ({trackerType, month}) => {
     const WeekView = () => {
         return (
             <div className={weeklyStyle.container} style={backgroundColor}>
-               {sampleWeekData?.map(({color, dayOfWeek}) => {
-                    return <Day color = {color} isNumber={false} dayText={dayOfWeek}/>;
+               {sampleMonthData.slice(23,30)?.map(({color, dayOfWeek, dayText}) => {
+                    return <Day color = {color} isNumber={false} day={dayText}dayOfWeek={dayOfWeek}/>;
                 })}
             </div>
         );
@@ -205,28 +207,28 @@ const LogTracker = ({trackerType, month}) => {
                 </div>
                 <div className={monthlyStyle.weeksContainer}>
                     <div className={monthlyStyle.weekRow}>
-                        {sampleMonthData.slice(0,2)?.map(({color, dayText}) => {
-                            return <Day color = {color} isNumber={true} dayText={dayText}/>;
+                        {sampleMonthData.slice(0,2)?.map(({color, dayText, dayOfWeek}) => {
+                            return <Day color = {color} isNumber={true} day={dayText} dayOfWeek={dayOfWeek}/>;
                         })}
                     </div>
                     <div className={monthlyStyle.weekRow}>
-                        {sampleMonthData.slice(2,9)?.map(({color, dayText}) => {
-                                return <Day color = {color} isNumber={true} dayText={dayText}/>;
+                        {sampleMonthData.slice(2,9)?.map(({color, dayText, dayOfWeek}) => {
+                                return <Day color = {color} isNumber={true} day={dayText} dayOfWeek={dayOfWeek}/>;
                         })}
                     </div>
                     <div className={monthlyStyle.weekRow}>
-                        {sampleMonthData.slice(9,16)?.map(({color, dayText}) => {
-                            return <Day color = {color} isNumber={true} dayText={dayText}/>;
+                        {sampleMonthData.slice(9,16)?.map(({color, dayText, dayOfWeek}) => {
+                            return <Day color = {color} isNumber={true} day={dayText} dayOfWeek={dayOfWeek}/>;
                         })}
                     </div>
                     <div className={monthlyStyle.weekRow}>
-                        {sampleMonthData.slice(16, 23)?.map(({color, dayText}) => {
-                            return <Day color = {color} isNumber={true} dayText={dayText}/>;
+                        {sampleMonthData.slice(16, 23)?.map(({color, dayText, dayOfWeek}) => {
+                            return <Day color = {color} isNumber={true} day={dayText} dayOfWeek={dayOfWeek}/>;
                         })}
                     </div>
                     <div className={monthlyStyle.weekRow}>
-                        {sampleMonthData.slice(23,30)?.map(({color, dayText}) => {
-                            return <Day color = {color} isNumber={true} dayText={dayText}/>;
+                        {sampleMonthData.slice(23,30)?.map(({color, dayText, dayOfWeek}) => {
+                            return <Day color = {color} isNumber={true} day={dayText} dayOfWeek={dayOfWeek}/>;
                         })}
                     </div>
                 </div>

@@ -101,7 +101,7 @@ const SymptomTracking = () => {
                     Today's Log
                 </div>
                 <div className={style.subtitle}>
-                    Friday, May 22, 2023
+                    Thursday, April 28, 2023
                 </div>
                 <div className={style.todayRow}>
                     <div className={style.symptomSeverityContainer}>
@@ -142,7 +142,7 @@ const SymptomTracking = () => {
                     This Week's Log
                 </div>
                 <div className={style.subtitle} style={{textAlign: "center"}}>
-                    Monday, May 18 - Sunday, May 24
+                    Sunday, April 24 - Saturday, April 30
                 </div>
                 <div className={style.weeklyRow}>
                     <LogTracker trackerType= {"week"}></LogTracker>

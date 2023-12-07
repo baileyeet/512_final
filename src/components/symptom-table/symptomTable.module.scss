@@ -100,6 +100,39 @@
     display: flex;
     flex-direction: column;
 }
+.descriptionRow{
+    flex: 1;
+    display: inline-flex;
+    .spacer {
+        flex:1;
+        //flex-direction: column;
+        display: inline-block;
+        gap: 25px;
+        text-align: left;
+        vertical-align: middle;
+    }
+    
+    .severityScale{
+        flex:1;
+        display: flex;
+        //flex-direction: column;
+        .severity{
+            flex: 1;
+            width: 116.695px;
+            height: 36px;
+            flex-shrink: 0;
+            stroke-width: 1px;
+            stroke: #B4B4B4;
+            color: #8D8D8D;
+            text-align: center;
+            font-family: "Lato";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    } 
+}
 
 .symptomBox {
     flex: 1;

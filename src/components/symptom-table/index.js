@@ -189,6 +189,20 @@ const SymptomTable = ({isToday}) => {
     const dataToUse = isToday ? todayDataList : sampleSymptomDataHistory;
     return (
         <div className={style.container}>
+            <div className={style.descriptionRow}>
+                <div className={style.spacer}></div>
+                <div className={style.severityScale}>
+                    <div className={style.severity}>
+                        Mild
+                    </div>
+                    <div className={style.severity}>
+                        Moderate
+                    </div>
+                    <div className={style.severity}>
+                        Severe
+                    </div>
+                </div>
+            </div>
             {dataToUse?.map(({symptomName, icon, severity}) => {
                     return <Row icon = {icon} symptomName={symptomName} severity={severity}/>;
                 })}

@@ -19,6 +19,7 @@ const Community = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const componentRef = useRef();
   const [postCategory, setPostCategory] = useState("Mental Health");
+  const [blogsData, setBlogsData] = useState(blogData);
 
   const categoryClicked = (category) => {
     setPostCategory(category);
@@ -28,7 +29,14 @@ const Community = () => {
       setModalOpen(true)
       console.log("modal open")
     };
-    const closeModal = () => setModalOpen(false);
+    const closeModal = (title, body, category) => {
+      setModalOpen(false);
+      const newBlog = {
+        title:title,
+        desc : body,
+      }
+      setBlogsData((prevBlogData) => [newBlog, ...prevBlogData]);
+    }
 
     const handleClickOutside = (event) => {
       if (componentRef.current && !componentRef.current.contains(event.target)) {
@@ -92,7 +100,7 @@ const Community = () => {
 
         {/* Questions */}
 
-        {blogData?.map(({ title, desc, blogImg }) => {
+        {blogsData?.map(({ title, desc, blogImg }) => {
           return <Question title={title} desc={desc} blogImg={blogImg} />;
         })}
       </div>

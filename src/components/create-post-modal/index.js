@@ -20,15 +20,17 @@ const categoryData = [
 const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
     const [inputTitleValue, setInputTitleValue] = useState('');
     const [inputBodyValue, setInputBodyValue] = useState('');
+    
 
     const { theme} = useTheme();
-  if (!isOpen) return null;
+  
   
   const postBGColor = {background: theme === "yellow" ? "rgba(255, 197, 98, 0.50)" : 
                                 theme === "blue" ? "rgba(66, 95, 128, 0.50)" :
                                 "rgba(246, 162, 144, 0.50)"}
   const category = startingCategory ? startingCategory : "Mental Health";
-
+  const [categoryValue, setCategoryValue] = useState(category);
+  if (!isOpen) return null;
   
   const handleTitleInputChange = (event) => {
     setInputTitleValue(event.target.value);
@@ -36,6 +38,9 @@ const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
   const handleBodyInputChange = (event) => {
     setInputBodyValue(event.target.value);
   };
+  const handleCategoryChange = (event) => {
+    setCategoryValue(event.target.value);
+  }
 
   const handleSubmit = (event) => {
     //event.preventDefault();
@@ -43,7 +48,7 @@ const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
     console.log('Submitted value:', inputTitleValue);
     setInputTitleValue("");
     setInputBodyValue("");
-    onClose();
+    onClose(inputTitleValue, inputBodyValue, categoryValue);
   };
   return (
     <div className="modal">
@@ -57,7 +62,7 @@ const CreatePostModal = ({ isOpen, onClose, startingCategory }) => {
                     <div className={style.categoryRow}>
                         <img alt= "icon" src={brainIcon}></img>
                         <div className={style.dropdown}>
-                            <select>
+                            <select onChange={handleCategoryChange}>
                             <option value="option1">{category}</option>
                             {categoryData?.map(({ title }, i) => {
                                     return ( title !==category ? 
